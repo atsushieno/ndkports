@@ -1,0 +1,38 @@
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 925a8840..73c7cf85 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -20,7 +20,6 @@ add_subdirectory(third_party/libnyquist)
+ 
+ include(cmake/common.cmake)
+ include(cmake/LabSound.cmake)
+-include(cmake/examples.cmake)
+ 
+ set_property(GLOBAL PROPERTY USE_FOLDERS ON)
+ 
+diff --git a/cmake/LabSound.cmake b/cmake/LabSound.cmake
+index 81f39206..c11a33fd 100644
+--- a/cmake/LabSound.cmake
++++ b/cmake/LabSound.cmake
+@@ -75,7 +75,7 @@ set(ooura_src
+     "${LABSOUND_ROOT}/third_party/ooura/src/fftsg.cpp"
+     "${LABSOUND_ROOT}/third_party/ooura/fftsg.h")
+ 
+-add_library(LabSound STATIC
++add_library(LabSound SHARED
+     "${LABSOUND_ROOT}/include/LabSound/LabSound.h"
+     ${labsnd_core_h}     ${labsnd_core}
+     ${labsnd_extended_h} ${labsnd_extended}
+diff --git a/cmake/common.cmake b/cmake/common.cmake
+index 04b5d617..3a877aa5 100644
+--- a/cmake/common.cmake
++++ b/cmake/common.cmake
+@@ -40,7 +40,7 @@ function(_set_compile_options proj)
+         target_compile_definitions(${proj} PRIVATE HAVE_STDINT_H=1 HAVE_SINF=1)
+     elseif(APPLE)
+     elseif(UNIX)
+-        target_link_libraries(${proj} pthread)
++        #target_link_libraries(${proj} pthread)
+         target_compile_options(${proj} PRIVATE -fPIC)
+         target_compile_definitions(${proj} PRIVATE WEBAUDIO_KISSFFT=1)
+         if(LABSOUND_JACK)
