@@ -44,10 +44,9 @@ class PrefabPackageBuilder(
     private val modulesDirectory = prefabDirectory.resolve("modules")
 
     private val packageComponents = listOf(
-        "com",
-        "android",
-        "ndk",
-        "thirdparty",
+        "name",
+        "atsushieno",
+        "ndkports",
         port.name
     )
 
