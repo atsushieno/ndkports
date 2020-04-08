@@ -34,4 +34,9 @@ object : AutoconfPort() {
     override val modules = listOf(
         Module("iconv")
     )
+
+    override fun configureArgs(
+        workingDirectory: File,
+        toolchain: Toolchain
+    ): List<String> = listOf("--disable-nls", "--enable-shared")
 }
