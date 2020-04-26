@@ -27,6 +27,8 @@ abstract class MesonPort : Port() {
 
     open val defaultLibraryType: DefaultLibraryType = DefaultLibraryType.Shared
 
+    open val otherOptions = listOf<String>()
+
     override fun configure(
         toolchain: Toolchain,
         sourceDirectory: File,
@@ -77,7 +79,7 @@ abstract class MesonPort : Port() {
                 defaultLibraryType.argument,
                 sourceDirectory.absolutePath,
                 buildDirectory.absolutePath
-            ), workingDirectory
+            ) + otherOptions, workingDirectory
         )
     }
 

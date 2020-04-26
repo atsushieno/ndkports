@@ -84,10 +84,10 @@ class Cli : CliktCommand(help = "ndkports") {
             port.extractSource(sourceTarball, sourceDirectory, workingDirectory)
 
             val apiForAbi = mapOf(
-                Abi.Arm to 16,
-                Abi.Arm64 to 21,
-                Abi.X86 to 16,
-                Abi.X86_64 to 21
+                Abi.Arm to 29,
+                Abi.Arm64 to 29,
+                Abi.X86 to 29,
+                Abi.X86_64 to 29
             )
             for (abi in Abi.values()) {
                 val api = apiForAbi.getOrElse(abi) {
